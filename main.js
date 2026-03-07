@@ -179,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const guestName = document.getElementById('guest-name').value;
         const guestCount = document.getElementById('guest-count').value;
-        const guestMessage = document.getElementById('guest-message').value;
 
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 发送中...';
@@ -199,8 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const recordData = {
                 fields: {
                     "来宾姓名": guestName,
-                    "赴宴人数": guestCount,
-                    "留言/备注": guestMessage || "无"
+                    "赴宴人数": guestCount
                 }
             };
 
