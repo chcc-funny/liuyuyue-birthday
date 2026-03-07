@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const APP_ID = 'cli_a90716a41df91bd7';
     const APP_SECRET = '0Clk4zaqwHd3K46eT3HL3elGLq3rzGgL';
     const APP_TOKEN = 'KhV9bKFsHadmsysLgDccWs6enxh';
-    const TABLE_ID = 'tblmIWN7ZXmVymZV';
+    const TABLE_ID = 'tblFbzk0cieXBcJy'; // 新表格 ID
 
     const showMsg = (msg, isSuccess) => {
         formMsg.textContent = msg;
