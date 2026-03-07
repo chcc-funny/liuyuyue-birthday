@@ -1,0 +1,403 @@
+/* Storybook Theme Custom CSS - Enhanced for Book Aesthetic */
+
+body {
+    /* Dynamic magical background handled by fixed div in HTML */
+    background-color: transparent;
+    font-family: 'ZCOOL KuaiLe', 'Comic Sans MS', sans-serif;
+    color: #4a3623;
+}
+
+/* The Book Container */
+.book-wrapper {
+    /* Leather cover effect under the pages */
+    background: #5c3a21;
+    border-radius: 12px;
+    padding: 6px 12px;
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        inset 0 0 10px rgba(0, 0, 0, 0.8);
+    margin: 20px auto;
+}
+
+@keyframes softPageGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.book-pages {
+    /* The paper pages with soft animated gradient for a cute birthday feel */
+    background: linear-gradient(-45deg, #fffaf0, #ffe4e6, #fef3c7, #fdf4ff);
+    background-size: 400% 400%;
+    animation: softPageGradient 12s ease-in-out infinite;
+    border-radius: 4px 12px 12px 4px;
+    /* Simulate the spine and pages */
+    box-shadow:
+        inset 15px 0 20px -5px rgba(0, 0, 0, 0.15),
+        /* spine fold shadow */
+        inset -2px 0 5px rgba(0, 0, 0, 0.05),
+        2px 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    border-left: 1px solid #e3d3c2;
+    min-height: 100vh;
+    padding-bottom: 20px;
+}
+
+/* Page lines texture to simulate stack of pages on the right edge */
+.book-pages::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    right: -6px;
+    width: 6px;
+    background: repeating-linear-gradient(to bottom,
+            #fdfaf6,
+            #fdfaf6 1px,
+            #e8dccb 1px,
+            #e8dccb 2px);
+    border-radius: 0 4px 4px 0;
+    z-index: -1;
+}
+
+/* 渐入动画 */
+.fade-in {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 动态魔法背景动画 */
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-gradient-bg {
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes float1 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(20px, -20px) scale(1.1);
+    }
+}
+
+.animate-float1 {
+    animation: float1 8s ease-in-out infinite;
+}
+
+@keyframes float2 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-30px, 20px) scale(0.9);
+    }
+}
+
+.animate-float2 {
+    animation: float2 10s ease-in-out infinite;
+}
+
+@keyframes float3 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(15px, 25px) scale(1.05);
+    }
+}
+
+.animate-float3 {
+    animation: float3 12s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(0.8) translateY(0);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.2) translateY(-10px);
+    }
+}
+
+.animate-twinkle {
+    animation: twinkle 3.5s ease-in-out infinite;
+}
+
+/* 旋转动画（用于音乐图标） */
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spin-anim {
+    animation: spin-slow 4s linear infinite;
+}
+
+/* 暂停旋转 */
+.spin-paused {
+    animation-play-state: paused;
+}
+
+/* ====== NEW: Swiper Book Page & Grid Styles ====== */
+
+.swiper {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.swiper-slide {
+    background: transparent;
+    width: 100%;
+}
+
+/* 2x2 Photo Grid in each page */
+.photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 10px;
+}
+
+.photo-item {
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+}
+
+/* 悬停魔法感缩放 */
+.photo-item:hover {
+    transform: scale(1.05) !important;
+    z-index: 10;
+}
+
+.photo-inner {
+    background-color: #fffaf0;
+    padding: 6px 6px 24px 6px;
+    border-radius: 4px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e3d3c2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-inner::before {
+    /* 装饰：固定相片的胶带/扣具感 */
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.photo-img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 2px;
+    border: 1px solid #f0e6d2;
+}
+
+.photo-caption {
+    margin-top: 5px;
+    text-align: center;
+    font-size: 11px;
+    color: #5c3a21;
+    font-family: inherit;
+    line-height: 1.2;
+}
+
+.swiper-pagination-bullet {
+    background: #cba88c;
+    opacity: 0.6;
+}
+
+.swiper-pagination-bullet-active {
+    background: #8b5a2b;
+    opacity: 1;
+}
+
+/* ====== /NEW ====== */
+
+/* 飞书表单额外样式 */
+input,
+select,
+textarea {
+    font-family: inherit;
+    background-color: #fff9f0 !important;
+    border-color: #dcd0c0 !important;
+    color: #5c3a21;
+}
+
+/* Custom Headers */
+.chapter-title {
+    font-size: 1.25rem;
+    color: #8b5a2b;
+    background: #f4e8d8;
+    display: inline-block;
+    padding: 4px 16px;
+    border-radius: 20px;
+    border: 1px solid #dcd0c0;
+    margin-bottom: 15px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.book-ribbon {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    width: 25px;
+    height: 60px;
+    background: #d45d5d;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.book-ribbon::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    border-left: 12.5px solid #d45d5d;
+    border-right: 12.5px solid #d45d5d;
+    border-bottom: 10px solid transparent;
+}
+
+/* ====== NEW: 魔法 3D 轨迹动画及特效 ====== */
+
+/* 初始状态：缩小、后仰、在右上角（或任意远方）并有一定的旋转，透明的 */
+.magic-3d-start {
+    transform: perspective(1000px) rotateX(60deg) rotateY(-20deg) rotateZ(15deg) scale(0.1) translate3d(200px, 400px, -400px) !important;
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.6s ease-out;
+}
+
+/* 结束状态：恢复原位及正常大小，清晰可见 */
+.magic-3d-end {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1) translate3d(0, 0, 0) !important;
+    opacity: 1;
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.6s ease-out;
+}
+
+/* 魔法棒动画：从图片的周围滑过并消失 */
+@keyframes wand-wave {
+    0% {
+        transform: translate(-30px, 30px) rotate(-45deg) scale(0);
+        opacity: 0;
+    }
+
+    20% {
+        transform: translate(-10px, -10px) rotate(15deg) scale(1.2);
+        opacity: 1;
+    }
+
+    40% {
+        transform: translate(50px, -30px) rotate(60deg) scale(1.1);
+        opacity: 1;
+    }
+
+    70% {
+        transform: translate(120px, 0px) rotate(120deg) scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translate(160px, 60px) rotate(160deg) scale(0.5);
+        opacity: 0;
+    }
+}
+
+.magic-wand-anim {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    font-size: 2.5rem;
+    color: #f4d03f;
+    text-shadow: 0 0 10px #f4d03f, 0 0 20px #ffed4a;
+    pointer-events: none;
+    z-index: 10000;
+    opacity: 0;
+}
+
+.magic-wand-anim.active {
+    animation: wand-wave 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* 魔法星星四散发射动画 */
+@keyframes star-burst {
+    0% {
+        transform: translate(0, 0) scale(0) rotate(0deg);
+        opacity: 1;
+        text-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(var(--s)) rotate(var(--r));
+        opacity: 0;
+        text-shadow: 0 0 5px currentColor;
+    }
+}
+
+.magic-star-particle {
+    position: absolute;
+    color: #ffd700;
+    text-shadow: 0 0 8px currentColor, 0 0 15px currentColor;
+    pointer-events: none;
+    z-index: 9999;
+}

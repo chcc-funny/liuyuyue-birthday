@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>刘语悦的周岁探险 - 邀请函</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Google Fonts 引入圆滑可爱的字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body class="antialiased overflow-x-hidden">
+
+    <!-- 动态星空童话背景 -->
+    <div
+        class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden bg-gradient-to-br from-[#fcebb6] via-[#ffced6] to-[#e6f2eb] animate-gradient-bg bg-[length:400%_400%]">
+        <!-- 柔和发光气泡 -->
+        <div class="absolute top-[10%] left-[10%] w-32 h-32 bg-white/40 rounded-full blur-3xl animate-float1"></div>
+        <div class="absolute top-[40%] right-[5%] w-48 h-48 bg-[#fdfaf6]/50 rounded-full blur-3xl animate-float2"></div>
+        <div class="absolute bottom-[20%] left-[15%] w-40 h-40 bg-[#ffced6]/40 rounded-full blur-3xl animate-float3">
+        </div>
+        <!-- 闪烁漂浮的星星魔尘 -->
+        <i class="fas fa-star absolute text-white/70 animate-twinkle"
+            style="top: 15%; left: 20%; font-size: 0.9rem; animation-delay: 0s;"></i>
+        <i class="fas fa-star absolute text-white/50 animate-twinkle"
+            style="top: 35%; right: 25%; font-size: 1.2rem; animation-delay: 1.2s;"></i>
+        <i class="fas fa-star absolute text-[#f4d03f]/60 animate-twinkle"
+            style="top: 65%; left: 15%; font-size: 1rem; animation-delay: 2.5s;"></i>
+        <i class="fas fa-star absolute text-white/80 animate-twinkle"
+            style="top: 80%; right: 20%; font-size: 0.8rem; animation-delay: 0.8s;"></i>
+        <i class="fas fa-magic absolute text-[#fcebb6]/50 animate-twinkle"
+            style="top: 25%; right: 10%; font-size: 1.5rem; animation-delay: 2s; transform: rotate(-15deg);"></i>
+    </div>
+
+    <!-- 音乐控制 -->
+    <div id="music-control"
+        class="fixed top-4 right-4 z-50 w-11 h-11 bg-[#fdfaf6] rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.2)] border border-[#dcd0c0] flex items-center justify-center cursor-pointer transition-transform duration-300">
+        <i class="fas fa-music text-[#8b5a2b] text-xl" id="music-icon"></i>
+    </div>
+    <audio id="bgm" src="bgm.mp3" loop preload="auto"></audio>
+
+    <!-- 魔法立体 Lightbox 容器 -->
+    <div id="magic-lightbox"
+        class="fixed inset-0 z-[9999] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-sm">
+        <div class="absolute inset-0 bg-black/60" id="lightbox-bg"></div>
+        <div id="lightbox-content" class="relative z-10 p-4 magic-3d-start">
+            <div
+                class="bg-[#fffaf0] p-4 pb-12 rounded-xl shadow-[20px_20px_60px_rgba(0,0,0,0.5)] border-2 border-[#e3d3c2] relative">
+
+                <!-- 魔法特效容器 -->
+                <i id="magic-wand" class="fas fa-wand-magic-sparkles magic-wand-anim"></i>
+                <div id="magic-stars-container" class="absolute inset-0 pointer-events-none overflow-visible"></div>
+
+                <img id="lightbox-img" src=""
+                    class="w-[80vw] max-w-xs aspect-square object-cover rounded border border-[#f0e6d2]">
+                <p id="lightbox-text"
+                    class="absolute bottom-4 left-0 right-0 text-center font-bold text-[#5c3a21] text-base font-['ZCOOL_KuaiLe'] px-4 leading-snug">
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-md mx-auto book-wrapper relative">
+        <div class="book-pages px-5 pt-8 pb-12">
+            <!-- 书签 -->
+            <div class="book-ribbon z-0"></div>
+
+            <!-- 书页标题区域 -->
+            <div class="text-center relative z-10 pt-4 pb-6 fade-in">
+                <h1 class="text-3xl font-bold tracking-wide"
+                    style="color: #5c3a21; text-shadow: 1px 1px 0px rgba(255,255,255,0.8);">
+                    刘语悦的一周岁探险
+                </h1>
+                <p class="font-bold mt-2" style="color: #8b5a2b; font-family: serif; font-size: 1.1rem;">
+                    MARCH 14th, 2026
+                </p>
+                <p class="text-lg font-bold mt-1" style="color: #4a3623;">诚邀您的到来！</p>
+                <div class="mt-4 flex justify-center text-[#8b5a2b] space-x-2 text-sm">
+                    <i class="fas fa-leaf"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-leaf"></i>
+                </div>
+            </div>
+
+            <!-- 第一章：成长图鉴 -->
+            <section class="fade-in mt-2 mb-8 relative z-10">
+                <div class="text-center">
+                    <span class="chapter-title">第一章：成长图鉴</span>
+                </div>
+
+                <div class="text-center px-4 mb-2 text-[#5c3a21] leading-relaxed text-sm font-bold">
+                    时间过得太快啦！我学会了翻滚、搞怪，<br>用笑容“统治”全家，快来看看我的探险记录吧！
+                </div>
+
+                <!-- 照片网格容器，直接放在书页上，四周带有童话装饰 -->
+                <div
+                    class="relative pt-4 pb-2 mt-4 border-2 border-dashed border-[#dcd0c0] rounded-xl bg-[#fffcf5]/40 backdrop-blur-sm">
+                    <!-- 童话风装饰元素 -->
+                    <i
+                        class="fas fa-seedling absolute -top-3 -left-3 text-[#a1d0ba] text-2xl opacity-80 transform -rotate-12 bg-[#fffaf0] rounded-full"></i>
+                    <i
+                        class="fas fa-fan absolute top-2 right-2 text-[#f4d03f] text-lg opacity-60 animate-spin-slow"></i>
+                    <i
+                        class="fas fa-star absolute -bottom-2 -left-2 text-[#f4d03f] text-xl opacity-80 bg-[#fffaf0] rounded-full"></i>
+                    <i
+                        class="fas fa-leaf absolute -bottom-3 -right-3 text-[#a1d0ba] text-2xl opacity-80 transform rotate-12 bg-[#fffaf0] rounded-full"></i>
+
+                    <!-- Swiper -->
+                    <div class="swiper mySwiper w-full px-2 relative z-10">
+                        <div class="swiper-wrapper">
+                            <!-- 写真列表将通过 JS 渲染，确保 05.webp 是第一张 -->
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination mt-4"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 第二章：派对详情 -->
+            <section class="fade-in space-y-5 mb-10 relative z-10">
+                <div class="text-center mt-6">
+                    <span class="chapter-title">第二章：派对详情</span>
+                </div>
+
+                <div class="text-center px-4 text-[#5c3a21] font-bold text-base leading-relaxed mb-4">
+                    麻麻说，一定要请大家来吃顿好哒！<br>
+                    我已经准备好最萌的状态，等你们来抱抱、<br>合影、分享我的大蛋糕哦！
+                </div>
+
+                <div class="bg-[#fff9f0] p-5 rounded-xl border border-[#dcd0c0] shadow-sm relative">
+                    <!-- 角落装饰 -->
+                    <i class="fas fa-seedling absolute top-3 left-3 text-[#a1d0ba] opacity-50"></i>
+                    <i class="fas fa-seedling absolute bottom-3 right-3 text-[#a1d0ba] opacity-50"></i>
+
+                    <div class="flex items-start gap-4 mb-4 mt-2">
+                        <div class="w-10 h-10 rounded-full bg-[#f4e8d8] flex items-center justify-center shrink-0">
+                            <i class="far fa-clock text-[#8b5a2b] text-xl"></i>
+                        </div>
+                        <div class="pt-0.5">
+                            <p class="text-xs text-[#8b5a2b] font-bold mb-0.5 uppercase tracking-wide">WHEN (时间)</p>
+                            <p class="font-bold text-[#4a3623]">2026年3月14日 (周六)</p>
+                            <p class="font-bold text-[#4a3623]">晚上 18:00 开始</p>
+                        </div>
+                    </div>
+
+                    <div class="w-full border-t border-dashed border-[#dcd0c0] my-3"></div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-[#f4e8d8] flex items-center justify-center shrink-0">
+                            <i class="fas fa-map-marker-alt text-[#8b5a2b] text-xl"></i>
+                        </div>
+                        <div class="pt-0.5">
+                            <p class="text-xs text-[#8b5a2b] font-bold mb-0.5 uppercase tracking-wide">WHERE (地点)</p>
+                            <p class="font-bold text-[#4a3623]">新粤港海鲜酒家(花都店)<br>二楼 吉祥厅</p>
+                            <p class="text-xs mt-1 text-[#8b5a2b]">广州花都区三东大道52号花琪国际一栋</p>
+                        </div>
+                    </div>
+
+                    <!-- 高德地图按钮 -->
+                    <a href="https://uri.amap.com/marker?position=113.220197,23.408226&name=新粤港海鲜酒家(花都店)吉祥厅&src=mypage&callnative=1"
+                        target="_blank"
+                        class="mt-5 block w-full bg-[#7ca982] hover:bg-[#6c9772] text-white font-bold py-3 px-4 rounded-lg text-center shadow-md transform hover:-translate-y-0.5 transition-all text-sm border border-[#5d8563]">
+                        <i class="fas fa-location-arrow mr-1"></i> 一键地图导航
+                    </a>
+                </div>
+            </section>
+
+            <!-- 第三章：赴宴回执单 -->
+            <section class="fade-in relative z-10 pb-4">
+                <div class="text-center mt-4 mb-4">
+                    <span class="chapter-title">RSVP 回执</span>
+                </div>
+
+                <!-- 巧妙利用生成的带有动物花草边框的背景图 (book_bg.png) 作为独立卡片 -->
+                <form id="rsvp-form"
+                    class="p-6 rounded-2xl shadow-lg border border-[#dcd0c0] space-y-4 relative bg-center bg-cover"
+                    style="background-image: url('book_bg.png'); min-height: 400px; padding-top: 40px; padding-bottom: 40px;">
+
+                    <!-- 半透明遮罩让文字更清晰 -->
+                    <div class="absolute inset-0 bg-white/40 rounded-2xl"></div>
+
+                    <div class="relative z-10 text-center mb-6">
+                        <h3 class="font-bold text-xl text-[#5c3a21]">请在 3月10日 前回复</h3>
+                    </div>
+
+                    <div class="relative z-10">
+                        <label
+                            class="block text-sm font-bold text-[#5c3a21] mb-1 uppercase tracking-wide drop-shadow-sm">NAME(S)
+                            宾客姓名</label>
+                        <input type="text" id="guest-name" required
+                            class="w-full px-3 py-2.5 rounded-lg border-2 border-[#dcd0c0] focus:border-[#8b5a2b] focus:ring-2 focus:ring-[#8b5a2b]/30 outline-none transition-all shadow-inner"
+                            placeholder="输入您的名字">
+                    </div>
+
+                    <div class="relative z-10">
+                        <label
+                            class="block text-sm font-bold text-[#5c3a21] mb-1 uppercase tracking-wide drop-shadow-sm">ATTENDEES
+                            赴宴人数</label>
+                        <select id="guest-count" required
+                            class="w-full px-3 py-2.5 rounded-lg border-2 border-[#dcd0c0] focus:border-[#8b5a2b] focus:ring-2 focus:ring-[#8b5a2b]/30 outline-none transition-all shadow-inner">
+                            <option value="1">1 人</option>
+                            <option value="2">2 人</option>
+                            <option value="3">3 人</option>
+                            <option value="4+">4 人及以上大家庭</option>
+                        </select>
+                    </div>
+
+                    <div class="relative z-10">
+                        <label
+                            class="block text-sm font-bold text-[#5c3a21] mb-1 uppercase tracking-wide drop-shadow-sm">DIETARY/NOTES
+                            忌口或留言</label>
+                        <textarea id="guest-message" rows="2"
+                            class="w-full px-3 py-2.5 rounded-lg border-2 border-[#dcd0c0] focus:border-[#8b5a2b] focus:ring-2 focus:ring-[#8b5a2b]/30 outline-none transition-all resize-none shadow-inner"
+                            placeholder="如：不要放辣..."></textarea>
+                    </div>
+
+                    <div class="relative z-10 pt-2">
+                        <button type="submit" id="submit-btn"
+                            class="w-full bg-[#8b5a2b] hover:bg-[#6b421c] text-[#fdfaf6] font-bold py-3 px-4 rounded-full text-center shadow-[0_4px_0_#5c3a21] active:shadow-[0_0px_0_#5c3a21] active:translate-y-1 transition-all flex items-center justify-center gap-2 text-base">
+                            <i class="fas fa-paper-plane"></i> 提交 Submit
+                        </button>
+                    </div>
+                    <!-- 提示信息 -->
+                    <div id="form-msg"
+                        class="relative z-10 text-center text-sm font-bold hidden py-2 mt-2 rounded-lg bg-white/80 border border-[#dcd0c0]">
+                    </div>
+                </form>
+            </section>
+
+            <div class="text-center pt-8 opacity-70 text-xs font-bold tracking-widest text-[#8b5a2b] pb-4">
+                <p>Looking forward to seeing you there!</p>
+                <p class="mt-1">Love, The Liu Family <i class="fas fa-heart text-[#d45d5d]"></i></p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
