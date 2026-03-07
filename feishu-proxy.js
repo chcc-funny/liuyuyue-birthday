@@ -13,6 +13,7 @@
 // 允许的来源域名（白名单）
 const ALLOWED_ORIGINS = [
   'https://liuyuyue.aicarengine.com',
+  'https://liuyuyue-birthday.pages.dev',
   'http://localhost',
   'http://127.0.0.1'
 ];
