@@ -160,6 +160,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn = document.getElementById('submit-btn');
     const formMsg = document.getElementById('form-msg');
 
+    // Cloudflare Worker 代理 URL（解决 CORS 问题）
+    const WORKER_URL = 'https://feishu-proxy.liu332737827.workers.dev';
+
     const APP_ID = 'cli_a90716a41df91bd7';
     const APP_SECRET = '0Clk4zaqwHd3K46eT3HL3elGLq3rzGgL';
     const APP_TOKEN = 'KhV9bKFsHadmsysLgDccWs6enxh';
@@ -185,9 +188,10 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.classList.add('opacity-70');
 
         try {
-            const tokenRes = await fetch('https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal', {
+            // 1. 通过 Worker 代理获取 Token
+            const tokenRes = await fetch(`${WORKER_URL}/api/token`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json; charset=utf-8' },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ app_id: APP_ID, app_secret: APP_SECRET })
             });
 
@@ -195,20 +199,22 @@ document.addEventListener('DOMContentLoaded', () => {
             if (tokenData.code !== 0) throw new Error('获取 Token 失败:' + tokenData.msg);
 
             const tenantAccessToken = tokenData.tenant_access_token;
-            const recordData = {
-                fields: {
-                    "来宾姓名": guestName,
-                    "赴宴人数": guestCount
-                }
-            };
 
-            const writeRes = await fetch(`https://open.feishu.cn/open-apis/bitable/v1/apps/${APP_TOKEN}/tables/${TABLE_ID}/records`, {
+            // 2. 通过 Worker 代理写入记录
+            const writeRes = await fetch(`${WORKER_URL}/api/record`, {
                 method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${tenantAccessToken}`,
-                    'Content-Type': 'application/json; charset=utf-8'
-                },
-                body: JSON.stringify(recordData)
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    tenant_access_token: tenantAccessToken,
+                    app_token: APP_TOKEN,
+                    table_id: TABLE_ID,
+                    record_data: {
+                        fields: {
+                            "来宾姓名": guestName,
+                            "赴宴人数": guestCount
+                        }
+                    }
+                })
             });
 
             const writeData = await writeRes.json();
